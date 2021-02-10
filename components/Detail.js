@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { ipAddress } from '../config/config';
+import { server } from '../config/config';
 
 
 export default function Detail(props) {
@@ -15,7 +15,7 @@ export default function Detail(props) {
     const rateClicked = () => {
         
         if (highlight > 0 && highlight < 6) {
-            fetch(`http://${ipAddress}:8000/api/movies/${movie.id}/rate_movie/`, {
+            fetch(`http://${server}/api/movies/${movie.id}/rate_movie/`, {
                 method: 'POST',
                 headers: {
                 'Authorization': `Token ${token}`,

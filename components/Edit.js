@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Alert, AsyncStorage } from 'react-native';
-import { ipAddress } from '../config/config';
+import { server } from '../config/config';
 
 export default function Edit(props) {
 
@@ -14,7 +14,7 @@ export default function Edit(props) {
     const saveMovie = () => {
 
         if (movie.id) {
-            fetch(`http://${ipAddress}:8000/api/movies/${movie.id}/`, {
+            fetch(`http://${server}/api/movies/${movie.id}/`, {
                 method: 'PUT',
                 headers: {
                   'Authorization': `Token ${token}`,
@@ -28,7 +28,7 @@ export default function Edit(props) {
             })
             .catch(err => console.log(err));
         } else {
-            fetch(`http://${ipAddress}:8000/api/movies/`, {
+            fetch(`http://${server}/api/movies/`, {
                 method: 'POST',
                 headers: {
                   'Authorization': `Token ${token}`,
@@ -87,7 +87,7 @@ const removeClicked = props => {
     const movie = props.navigation.getParam("movie");
     const token = props.navigation.getParam("token");
 
-    fetch(`http://${ipAddress}:8000/api/movies/${movie.id}/`, {
+    fetch(`http://${server}/api/movies/${movie.id}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Token ${token}`,

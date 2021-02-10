@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { FlatList, StyleSheet, Text, View, Image, Button, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
-import { ipAddress } from '../config/config';
+import { server } from '../config/config';
 
 export default function MovieList(props) {
 
@@ -23,7 +23,7 @@ export default function MovieList(props) {
   }, []);
 
   const getMovies = () => {
-    fetch(`http://${ipAddress}:8000/api/movies`, {
+    fetch(`http://${server}/api/movies`, {
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`

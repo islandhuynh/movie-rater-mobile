@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Alert, AsyncStorage, TouchableOpacity } from 'react-native';
-import {ipAddress} from '../config/config';
+import {server} from '../config/config';
 
 export default function Auth(props) {
 
@@ -14,7 +14,7 @@ export default function Auth(props) {
 
     const auth = () => {
         if(registerView) {
-            fetch(`http://${ipAddress}:8000/api/users/`, {
+            fetch(`http://${server}/api/users/`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export default function Auth(props) {
             })
             .catch(err => console.log(err));
         } else {
-            fetch(`http://${ipAddress}:8000/auth/`, {
+            fetch(`http://${server}/auth/`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
